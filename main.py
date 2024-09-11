@@ -1,18 +1,21 @@
 import streamlit as st
 
-divs = ()
+st.set_page_config(layout="wide",page_icon="Images/Icon.webp", page_title="Graeden Boyer")
 
- = ({"col1" : "Project"}, {"col2" : "prodesc"})
+data = (({"title":"Todo app", "image": "Images/TodoApp.png"}, {"description": "Description"}),({"title":"Camera Converter", "image": "Images/TodoApp.png"},{"description":"Description"}))
 
 # change range to change number of rows
-for i in range(2):
+for i, number in enumerate(range(len(data))):
     # this effects columns/width
-    row = st.columns(2)
+    row = st.columns(2, vertical_alignment="bottom",gap="small")
 
-    for i,col in enumerate(row):
-        tile = col.container(height= 120)
-        tile.title("bla")
-        print(dict[i-1])
+    for index, col in enumerate(row):
+        tile = col.container(height= 750, border=False)
+        if index == 0:
+            tile.title(data[i][index]["title"])
+            tile.image(data[i][index]["image"])
+        if index == 1:
+            tile.title(data[i][index]["description"])
 
 st.session_state
 

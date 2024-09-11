@@ -1,14 +1,14 @@
 import streamlit as st
 
 # Set up the pages configuration
-st.set_page_config(layout="wide", page_icon="Images/Icon.webp", page_title="Graeden Boyer")
+st.set_page_config(layout="centered", page_icon="Images/Icon.webp", page_title="Graeden Boyer")
 
 # Create two columns with the specified gap
-col1, col2 = st.columns(2, gap="small")
+col1, col2 = st.columns(2, gap="large")
 
 # Add content to the first column
 with col1:
-    st.image("Images/photo.png",use_column_width="always")
+    st.image("Images/Snow.png", width=300)
 
 # Add content to the second column
 with col2:
@@ -18,7 +18,8 @@ with col2:
     I have taken it upon myself to get the education and experience by developing application and use industry best standards to prepare me for a career in technologies.'''
     st.write(content)
 
-
-st.write("Below Are some of my projects I have been working on to improve my skills.")
+rowcol1, rowcol2, rowcol3 = st.columns(3,gap="large")
+with rowcol2:
+    st.write("<h1><u>Projects</u></h1>", unsafe_allow_html=True)
 
 st.session_state

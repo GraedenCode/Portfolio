@@ -5,18 +5,22 @@ import pandas
 st.set_page_config(page_icon="Images/Icon.webp", page_title="Graeden Boyer")
 
 
-df = pandas.read_csv("data.csv", sep=";")
+def print_projects(index):
+    st.header(title_list[index], anchor=False)
+    st.image('Images/' + image_list[index])
+    st.write(desc_list[index])
+    st.link_button("Source Code", url_list[index])
 
-# Create two columns with the specified gap
+
+st.title("Graeden Boyer", anchor=False)
+
 col1, col2 = st.columns(2, gap="large")
 
-# Add content to the first column
 with col1:
     st.image("Images/Snow.png", width=350)
 
-# Add content to the second column
+
 with col2:
-    st.title("Graeden Boyer")
     content = '''
     Hi, I’m Graeden, a dedicated and self-driven professional with 5 years of sales experience, consistently outperforming peers in my market.
      While I’ve excelled in sales, my true passion lies in software development and technology. Despite financial barriers that prevented me from attending college,
@@ -26,29 +30,34 @@ with col2:
      and eventually mentor others who share my passion for development.'''
     st.info(content)
 
-rowcol1, rowcol2, rowcol3 = st.columns(3,gap="large")
-with rowcol2:
-    st.write("<h1><u>Projects</u></h1>", unsafe_allow_html=True)
+st.write("<center><h1><u>Projects</u></h1></center>", unsafe_allow_html=True, anchor=False)
 
-col3,col4 = st.columns(2, vertical_alignment="center")
+col3,col4 = st.columns(2, vertical_alignment="top")
 
 df = pandas.read_csv("data.csv", sep=";")
-with col3:
-    for i, row in df[10:].iterrows():
-        container = st.container(border=True)
-        with container:
-            st.header(row["title"])
-            st.image('Images/' + row["image"])
-            st.write(row["description"])
-            st.link_button(row["title"], row["url"])
-            next
 
-        with col4:
-            for i, row in df[:10].iterrows():
-                container = st.container(border=True)
-                with container:
-                    st.header(row["title"])
-                    st.image('Images/' + row["image"])
-                    st.write(row["description"])
-                    st.link_button(row["title"], row["url"])
+title_list = []
+image_list = []
+desc_list = []
+url_list = []
 
+for i,row in df.iterrows():
+    title_list.append(str(row['title']))
+    image_list.append(row['image'])
+    desc_list.append(row['description'])
+    url_list.append(row['url'])
+
+count = True
+index = 0
+
+while count == True:
+    index +=1
+    if index == 20:
+        count = False
+    else:
+        if index%2 == 0:
+            with col3:
+                print_projects(index)
+        else:
+            with col4:
+                print_projects(index)

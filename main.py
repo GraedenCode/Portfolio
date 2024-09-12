@@ -2,8 +2,14 @@ import streamlit as st
 import pandas
 
 # Set up the pages configuration
-st.set_page_config(page_icon="Images/Icon.webp", page_title="Graeden Boyer")
+st.set_page_config(
+    page_icon="Images/Icon.webp",
+    page_title="Graeden Boyer",
+    layout="centered",
+    initial_sidebar_state='collapsed'
+)
 
+st.sidebar.write("/pages")
 
 def print_projects(index):
     st.header(title_list[index], anchor=False)
@@ -11,7 +17,7 @@ def print_projects(index):
     st.write(desc_list[index])
     st.link_button("Source Code", url_list[index])
 
-st.write("<center><h1><u>Graeden Boyer</u></h1></center>", unsafe_allow_html=True, anchor=False)
+st.write("<center><h1><u>Graeden Boyer</u></h1></center>", unsafe_allow_html=True)
 
 col1, col2 = st.columns(2, gap="large")
 
@@ -21,7 +27,7 @@ with col1:
 
 with col2:
     content = '''
-    Hi, I’m Graeden, a dedicated and self-driven professional with 5 years of sales experience, consistently outperforming peers in my market.
+    Hi, I’m Graeden, a dedicated and self-driven professional with 3 years of sales experience, consistently outperforming peers in my market.
      While I’ve excelled in sales, my true passion lies in software development and technology. Despite financial barriers that prevented me from attending college,
      I’ve taken it upon myself to learn and grow in the tech field. I’m currently self-educating by developing applications,
       staying up-to-date with industry best practices, and continually improving my skills. 
@@ -29,7 +35,7 @@ with col2:
      and eventually mentor others who share my passion for development.'''
     st.info(content)
 
-st.write("<center><h1><u>Projects</u></h1></center>", unsafe_allow_html=True, anchor=False)
+st.write("<center><h1><u>Projects</u></h1></center>", unsafe_allow_html=True)
 
 col3,col4 = st.columns(2, vertical_alignment="top")
 
@@ -50,7 +56,6 @@ count = True
 index = 0
 
 while count == True:
-    index +=1
     if index == 20:
         count = False
     else:
@@ -60,3 +65,4 @@ while count == True:
         else:
             with col4:
                 print_projects(index)
+    index += 1

@@ -56,7 +56,7 @@ count = True
 index = 0
 
 while count == True:
-    if index == 20:
+    if index == len(title_list):
         count = False
     else:
         if index%2 == 0:

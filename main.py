@@ -11,8 +11,7 @@ def print_projects(index):
     st.write(desc_list[index])
     st.link_button("Source Code", url_list[index])
 
-
-st.title("Graeden Boyer", anchor=False)
+st.write("<center><h1><u>Graeden Boyer</u></h1></center>", unsafe_allow_html=True, anchor=False)
 
 col1, col2 = st.columns(2, gap="large")
 

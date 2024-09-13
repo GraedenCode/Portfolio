@@ -9,7 +9,6 @@ st.set_page_config(
     initial_sidebar_state='collapsed'
 )
 
-st.sidebar.write("/pages")
 
 def print_projects(index):
     st.header(title_list[index], anchor=False)

@@ -46,7 +46,7 @@ desc_list = []
 url_list = []
 
 for i,row in df.iterrows():
-    title_list.append(str(row['title']))
+    title_list.append(row['title'])
     image_list.append(row['image'])
     desc_list.append(row['description'])
     url_list.append(row['url'])
